@@ -22,39 +22,114 @@
 Суши "Чизмаки"
 Суши "Сеякемаки"
 Десерт Тирамису
-Десерт Чизкейк
+Десерт Чизкейк		]
+
 */
+
+// Меню
+
+const menu = new Set(["Маргарита", 
+						"Пепперони", 
+						"Три сыра", 
+						"Филадельфия", 
+						"Калифорния", 
+						"Чизмаки", 
+						"Сеякемаки", 
+						"Тирамису", 
+						"Чизкейк"
+					])
+
+
+// Повара и их специализации.
+class Cook {
+	constructor(name, specialization) {
+		this.name = name;
+		this.specialization = specialization;
+	}
+}
+
+const listCook = [];
+listCook.push({name:"Олег", specialization:"Пицца"});
+listCook.push({name:"Андрей", specialization:"Суши"});
+listCook.push({name:"Анна", specialization:"Десерт"});
+
 
 // Посетитель ресторана.
 class Client {
-  constructor(firstname, lastname) {
-    this.firstname = firstname;
-    this.lastname = lastname;
-  }
+  	constructor(firstname, lastname) {
+    	this.firstname = firstname;
+    	this.lastname = lastname;
+  	}
 }
+
+// Заказ
+class Order {
+	constructor(name, quantity, type) {
+    	this.name = name;
+		this.quantity = quantity;
+		this.type = type;
+  	}
+}
+
+// Список заказов
+const clientOrders = [];
+
 
 // Вам необходимо реализовать класс, который управляет заказами и поварами.
-class Manager {
-
-}
-
 // Можно передать внутрь конструктора что-либо, если необходимо.
-const manager = new Manager();
+class Manager {
+	
 
+	newOrder(client, ...order) {
+
+		clientOrders.push({ client, order });
+		let str = [];
+		for (const num of order) {
+			if (!menu.has(num.name)) {
+				// вариант 1
+				//throw `${num.type} "${num.name}" - такого блюда не существует.`;
+				// вариант 2
+				str.push(`${num.type} "${num.name}" - такого блюда не существует.`);
+				
+		    } else {
+
+				let nameChef = '';
+
+				for (const cook of listCook) {
+					
+					if (cook.specialization == num.type) {
+					nameChef = cook.name;
+					}
+				}
+				str.push(`${num.type} "${num.name}" - ${num.quantity}шт; готовит повар ${nameChef}`);
+			}
+		}
+		console.log(`Клиент ${client.firstname} ${client.lastname} заказал: `);
+		console.log(str.join('\n'));
+		console.log('\n');
+	}
+
+	
+}
+	
+const manager = new Manager();
 // Вызовы ниже должны работать верно, менять их нельзя, удалять тоже.
+//-------------------------------------------------------------------------------------------------
+//  1order
+
 manager.newOrder(
-  new Client("Иван", "Иванов"), 
-  { name: "Маргарита", quantity: 1, type: "Пицца" },
-  { name: "Пепперони", quantity: 2, type: "Пицца" },
-  { name: "Чизкейк", quantity: 1, type: "Десерт" },
-);
+	new Client("Иван", "Иванов"), 
+	{ name: "Маргарита", quantity: 1, type: "Пицца" },
+	{ name: "Пепперони", quantity: 2, type: "Пицца" },
+	{ name: "Чизкейк", quantity: 1, type: "Десерт" },
+  );
 // Вывод:
 // Клиент Иван заказал: 
 // Пицца "Маргарита" - 1; готовит повар Олег
 // Пицца "Пепперони" - 2; готовит повар Олег
 // Десерт "Чизкейк" - 1; готовит повар Анна
-
-// ---
+//-------------------------------------------------------------------------------------------------
+// 2order	
 
 const clientPavel = new Client("Павел", "Павлов");
 manager.newOrder(
@@ -66,9 +141,11 @@ manager.newOrder(
 // Клиент Павел заказал: 
 // Суши "Филадельфия" - 5; готовит повар Андрей
 // Суши "Калифорния" - 3; готовит повар Андрей
-
+//-------------------------------------------------------------------------------------------------
+// 3order	
+const clientSergey = new Client("Сергей", "Сергеев");
 manager.newOrder(
-  clientPavel, 
+	clientSergey, 
   { name: "Калифорния", quantity: 1, type: "Суши" },
   { name: "Тирамису", quantity: 2, type: "Десерт" },
 );
@@ -77,11 +154,17 @@ manager.newOrder(
 // Суши "Филадельфия" - 5; готовит повар Андрей
 // Суши "Калифорния" - 4; готовит повар Андрей
 // Десерт "Тирамису" - 2; готовит повар Анна
-
+//-------------------------------------------------------------------------------------------------
+// 4order
+const clientSemen = new Client("Семен", "Семенов");
 manager.newOrder(
-  clientPavel, 
+	clientSemen, 
   { name: "Филадельфия", quantity: 1, type: "Суши" },
   { name: "Трубочка с вареной сгущенкой", quantity: 1, type: "Десерт" },
 );
 // Ничего не должно быть добавлено, должна быть выброшена ошибка:
 // Десерт "Трубочка с вареной сгущенкой" - такого блюда не существует.
+
+
+
+

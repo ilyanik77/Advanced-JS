@@ -15,3 +15,22 @@
 вывода их в консоль в формате:
 "Название альбома - Исполнитель (Год выпуска)"
 */
+
+const musicAlbums = [
+  { title: "Крылья", artist: "Наутилус Помпилиус", year: 1995 },
+  { title: "Позорная звезда", artist: "Агата Кристи", year: 1992 },
+  { title: "Четвёртый стул", artist: "Чайф", year: 1991 },
+]
+
+const playList = {
+  musicAlbums,
+  *[Symbol.iterator]() {
+    for (const el of musicAlbums) {
+      yield el;
+    }
+  }
+}
+
+for (const el of musicAlbums) {
+  console.log(`Название альбома: ${el.title} -- Исполнитель: ${el.artist} (${el.year} год)`);
+}
