@@ -20,13 +20,13 @@
 */
 
 class Library {
-  	#books = [];
+	#books = [];
 
-  	constructor(books) {
-    	this.#books = books;
+	constructor(books) {
+    		this.#books = books;
   	}
-
-  	uniquenessListBooks() {
+	
+	uniquenessListBooks() {
 		const listBooks = new Set(this.#books);
 		try {
 			if(this.#books.length !== listBooks.size) {
@@ -40,30 +40,30 @@ class Library {
 	}
 
   	getListBooks() {
-    	return console.log(this.#books.join(",\n"));
+    		return console.log(this.#books.join(",\n"));
   	}
 
   	addBookToList(title) {
-    	try {	
-      		if (this.#books.includes(title)) {
-        		throw new Error(`Такая книга уже есть в библиотеке.`);
-      		}
-      		this.#books.push(title);
-    	} catch (error) {
-      		console.log(error.message);
-    	}
-  	}
+    		try {	
+      			if (this.#books.includes(title)) {
+        			throw new Error(`Такая книга уже есть в библиотеке.`);
+      			}
+      			this.#books.push(title);
+    		} catch (error) {
+      			console.log(error.message);
+    		}
+ 	}
 
-  	removeBookFromList(title) {
-    const index = this.#books.indexOf(title);
-    	try {
-    	   	if (index === -1) {
-    	     	throw new Error(`Такой книги нет в библиотеке.`);
-    	   	}
-    	   	this.#books.splice(index, 1);
-    	} catch (error) {
-       		console.log(error.message);
-    	}
+ 	removeBookFromList(title) {
+ 		const index = this.#books.indexOf(title);
+  		try {
+    	   		if (index === -1) {
+    	     			throw new Error(`Такой книги нет в библиотеке.`);
+    	   		}
+    	   		this.#books.splice(index, 1);
+    		} catch (error) {
+       			console.log(error.message);
+    		}
   	}
 }
 
