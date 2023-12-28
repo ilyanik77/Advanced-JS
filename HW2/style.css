@@ -1,0 +1,33 @@
+#container {
+    border: 1px solid black;
+    width: 300px;
+    margin: 20px 0;
+}
+h2, h3  {
+    text-align: center;
+}
+#product {
+    
+    padding: 10px;
+    width: 250px;
+    margin: 10px 0;
+    margin-left: 15px;
+}
+#reviews {
+    
+    width: 250px;
+    padding: 10px;
+    margin: 10px 0;
+    margin-left: 15px;
+}
+#inputText {
+    
+    width: 250px;
+    padding: 10px;
+    margin: 10px 0;
+    margin-left: 15px;
+}
+#inputText textarea {
+    height: 150px;
+    width: 250px;
+}
