@@ -23,25 +23,13 @@ for (let i = 0; i < btnFeedbackList.length; i++) {
     btnFeedbackList[i].addEventListener("click",() => {
         if (feedbackList[i].style.display === "none") {
             feedbackList[i].style.display = "block";
-            btnFeedbackList[i].innerHTML = "Скрыть отзывы"
+            btnFeedbackList[i].innerHTML = "Скрыть отзывы";
         } else {
             feedbackList[i].style.display = "none";
-            btnFeedback[i].innerHTML = "Показать отзывы"
+            btnFeedback[i].innerHTML = "Показать отзывы";
         }
     })
 }
-// // обработка события click (показывает или скрывает отзывы на конкретный товар)
-// for (let i = 0; i < feedbackListBtnEl.length; i++) {
-//   feedbackListBtnEl[i].addEventListener("click", () => {
-//     if (feedbackListEl[i].style.display === "none") {
-//       feedbackListEl[i].style.display = "block";
-//       feedbackListBtnEl[i].innerHTML = "Скрыть отзывы";
-//     } else {
-//       feedbackListEl[i].style.display = "none";
-//       feedbackListBtnEl[i].innerHTML = "Показать отзывы";
-//     }
-//   });
-// }
 
 function toggleVisibility() {
     const element = document.getElementById('feedbackList');
