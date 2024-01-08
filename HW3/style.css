@@ -1,0 +1,21 @@
+.content {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.button {
+    padding: 10px 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.nameProduct {
+    width: 200px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.feedback {
+    width: 300px;
+    height: 100px;
+}
