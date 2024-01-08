@@ -7,7 +7,7 @@ const contentHtml = feedbacksList()
     .map((el) => `<article>
                     <h1>${el.nameProduct}</h1>
                     <ul  class="feedbackList"  style="display: none;">
-                        ${el.feedback.map((i) => `<li>${i}</li><button id="btnDelFeedback" class="btnDelFeedback">Удалить отзыв</button>`).join(" ")}
+                        ${el.feedback.map((i) => `<li>${i}<button onclick="DeleteFeedback()" id="btnDelFeedback" class="btnDelFeedback">Удалить отзыв</button></li>`).join(" ")}
                     </ul>
                     <button id="btnFeedback" class="btnFeedback">Показать отзывы</button>
                 </article>`
@@ -40,3 +40,7 @@ function movePageFeedbacks() {
 }
 
 btnPageFeedbacks.addEventListener("click", movePageFeedbacks);
+
+function DeleteFeedback() {
+    
+}
